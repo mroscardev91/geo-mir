@@ -12,6 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // Definir constante para el rol 'author'
+    const ROLE_AUTHOR = 1;
+
+    // ...
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Establecer un valor por defecto para el role_id al crear un usuario
+        static::creating(function ($user) {
+            $user->role_id = self::ROLE_AUTHOR;
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             // clave foránea para relacionar role_id con id de la tabla roles
         });
+         
     }
 
     /**
