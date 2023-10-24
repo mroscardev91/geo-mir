@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use App\Http\Controllers\MailController;
 
 
 /*
@@ -26,7 +26,8 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
- 
+Route::get('mail/test', [MailController::class, 'test']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
