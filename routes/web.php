@@ -30,7 +30,9 @@ Route::get('/', function (Request $request) {
 Route::get('mail/test', [MailController::class, 'test']);
 
 /*Per generar rutes CRUD*/
-Route::resource('files', FileController::class);
+Route::resource('files', FileController::class)
+->middleware(['auth', 'role.any:1,2,3']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
