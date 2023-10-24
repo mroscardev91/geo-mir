@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\MailController;
-
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,11 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
+/*Per enviar mails*/
 Route::get('mail/test', [MailController::class, 'test']);
 
+/*Per generar rutes CRUD*/
+Route::resource('files', FileController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
