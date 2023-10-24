@@ -34,7 +34,10 @@ Route::resource('files', FileController::class)
 ->middleware(['auth', 'role.any:1,2,3']);
 
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (Request $request) {
+    $message = 'Loading welcome page';
+    Log::info($message);
+    $request->session()->flash('info', $message);
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
