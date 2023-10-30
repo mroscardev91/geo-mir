@@ -37,7 +37,7 @@ Route::resource('files', FileController::class)
 Route::get('/dashboard', function (Request $request) {
     $message = 'Loading welcome page';
     Log::info($message);
-    $request->session()->flash('info', $message);
+    $request->session()->flash('info', "$message");
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
