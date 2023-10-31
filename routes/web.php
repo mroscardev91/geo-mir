@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReviewControllerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +32,19 @@ Route::get('/', function (Request $request) {
 /*Per enviar mails*/
 Route::get('mail/test', [MailController::class, 'test']);
 
-/*Per generar rutes CRUD*/
+/*Per generar rutes CRUD de files*/
 Route::resource('files', FileController::class)
 ->middleware(['auth', 'role.any:1,2,3']);
+
+
+/*Per generar rutes CRUD de places*/
+Route::resource('places', PlaceController::class)
+->middleware(['auth', 'role.any:1,2,3']);
+/*Per generar rutes CRUD de favorites*/
+Route::resource('favorites', FavoriteController::class);
+/*Per generar rutes CRUD de reviews*/
+Route::resource('reviews', ReviewController::class);
+
 
 
 Route::get('/dashboard', function (Request $request) {

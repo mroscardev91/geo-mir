@@ -23,9 +23,9 @@ class PlaceController extends Controller
     public function store(Request $request)
     {
         // Desa el fitxer al storage
-        $path = $request->file('file')->store('places');
-        $file = File::create(['filepath' => $path]);
-
+        $path = $request->file('file')->store('uploads', 'public'); 
+        $fileSize = $request->file('file')->getSize();
+        $file = File::create(['filepath' => $path, 'filesize' => $fileSize]);
         // Desa la clau primària (id) del nou registre de la taula files a una variable
         $fileId = $file->id;
 
