@@ -9,7 +9,20 @@ class Place extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'file_id'];
+    protected $fillable = ['name', 'description', 'file_id', 'author_id'];
+
+    //relacio amb la taula users, utilizant author_idz
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    //relacio amb la taula users, utilizant user_id
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
 
     // Relació amb la taula files
     public function file()

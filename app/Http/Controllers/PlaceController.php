@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Place;
 use App\Models\File;
+use App\Models\User;
 
 class PlaceController extends Controller
 {
@@ -20,7 +21,7 @@ class PlaceController extends Controller
         return view('places.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, user $user)
     {
         // Desa el fitxer al storage
         $path = $request->file('file')->store('uploads', 'public'); 
@@ -33,9 +34,11 @@ class PlaceController extends Controller
         $data = $request->all();
         $data['file_id'] = $fileId;
 
+        $data['author_id'] = auth()->id();
         Place::create($data);
 
-        return redirect()->route('places.index');
+        return redirect()->route('places.index')
+        ->with('success', 'Place successfully saved');
     }
 
     public function show(Place $place)
@@ -56,14 +59,18 @@ class PlaceController extends Controller
             $place->file_id = $file->id;
         }
 
+        $place->author_id = auth()->id();
+        
         $place->update($request->all());
 
-        return redirect()->route('places.index');
+        return redirect()->route('places.index')
+        ->with('success', 'Place successfully updated');
     }
 
     public function destroy(Place $place)
     {
         $place->delete();
-        return redirect()->route('places.index');
+        return redirect()->route('places.index')
+        ->with('success', 'Place successfully deleted');
     }
 }

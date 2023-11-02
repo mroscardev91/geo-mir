@@ -9,20 +9,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <table class="table">
-                       <thead>
+                    <table class="min-w-full divide-y divide-gray-200">
+                       <thead class="bg-gray-50">
                            <tr>
-                               <td scope="col">ID</td>
-                               <td scope="col">Nom</td>
-                               <td scope="col">Descripcio</td>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name author</th>
                            </tr>
                        </thead>
-                       <tbody>
+                       <tbody class="bg-white divide-y divide-gray-200">
                            @foreach ($places as $place)
-                           <tr>
-                               <td>{{ $place->id }}</td>
-                               <td>{{ $place->name }}</td>
-                               <td>{{ $place->description }}</td>
+                           <tr class="hover:bg-gray-100">
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->id }}</td>
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->name }}</td>
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->description }}</td>
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->author->name }}</td>
                            </tr>
                            @endforeach
                        </tbody>

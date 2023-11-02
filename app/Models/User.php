@@ -17,6 +17,14 @@ class User extends Authenticatable
 
     // ...
 
+    public function places()
+    {
+        return $this->hasMany(Place::class, 'author_id');
+    }
+
+
+
+
     protected static function boot()
     {
         parent::boot();

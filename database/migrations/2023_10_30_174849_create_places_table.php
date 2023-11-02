@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('file_id')->nullable(); // per a la relació amb la taula files
+            $table->unsignedBigInteger('file_id');// per a la relació amb la taula files
+            $table->unsignedBigInteger('author_id'); 
             $table->timestamps();
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

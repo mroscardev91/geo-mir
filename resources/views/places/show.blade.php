@@ -8,21 +8,21 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-9 bg-white border-b border-gray-200">
-                    <h1>{{ $place->name }}</h1>
-                    <p>{{ $place->description }}</p>
+                <div class="p-9 bg-white border-b border-gray-200 space-y-4">
+                    <h1 class="text-2xl font-bold">{{ $place->name }}</h1>
+                    <p class="text-gray-700">{{ $place->description }}</p>
                     @if($place->file)
-                        <img class="img-fluid" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
+                        <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
                     @endif
  
-                    <!-- Botó Editar -->
-                    <a href="{{ route('places.edit', $place) }}" class="btn btn-primary mt-4">Editar</a>
+                    <!-- Botón Editar -->
+                    <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Editar</a>
  
-                    <!-- Botó Eliminar -->
-                    <form action="{{ route('places.destroy', $place) }}" method="POST" class="mt-4">
+                    <!-- Botón Eliminar -->
+                    <form action="{{ route('places.destroy', $place) }}" method="POST" class="mt-4 inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
                     </form>
                 </div>
             </div>
