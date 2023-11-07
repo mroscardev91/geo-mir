@@ -54,10 +54,13 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place)
     {
         if($request->hasFile('file')) {
-            $path = $request->file('file')->store('places');
-            $file = File::create(['filepath' => $path]);
-            $place->file_id = $file->id;
+            $path = $request->file('file')->store('uploads', 'public');
+            $fileSize = $request->file('file')->getSize();
+            $file = File::create(['filepath' => $path, 'filesize' => $fileSize]);
         }
+
+        $place->file_id = $file->id;
+        $place->save();
 
         $place->author_id = auth()->id();
         

@@ -14,7 +14,7 @@
                     <div class="space-y-2">
                         <p><strong>ID:</strong> {{ $place->id }}</p>
                         <p><strong>Name:</strong> {{ $place->name }}</p>
-                        <p><strong>Description:</strong> {{ $place->description }} bytes</p>
+                        <p><strong>Description:</strong> {{ $place->description }}</p>
                     </div>
 
                     <!-- Formulario para actualizar un place -->
