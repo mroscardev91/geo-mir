@@ -67,11 +67,9 @@ class PostController extends Controller
 
     public function destroy(Post $post): RedirectResponse
     {
-        Storage::disk('public')->delete($post);
-        if($post->file->id != null){
-            $post->file->delete();
-        }
+        Storage::disk('public')->delete($post->file->filepath);
         $post->delete();
+        $post->file->delete();
         return redirect(route('posts.index'));
     }
 }
