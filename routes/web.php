@@ -9,7 +9,8 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\ReviewControllerController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('posts', PostController::class)
+    ->only(['index', 'store','edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

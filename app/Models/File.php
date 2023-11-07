@@ -15,4 +15,13 @@ class File extends Model
         return $this->hasOne(Place::class);
     }
 
+    public function post()
+    {
+        return $this->hasOne(Post::class);
+    }
+
+    public  function getFilePath(){
+        return $this->filepath;
+    }
+
 }
