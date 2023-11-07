@@ -9,6 +9,8 @@ use App\Models\Post;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
+use function PHPUnit\Framework\isEmpty;
+
 class PostController extends Controller
 {
     /**
@@ -54,7 +56,7 @@ class PostController extends Controller
         $post->update(['message' => $request->input('message')]);
 
         if($request->hasFile("image" )){
-            Storage::disk('public')->delete($post->file->filepath);
+            Storage::disk('public')->delete(explode("/", $post->file->filepath)[1]);
             $post->file->delete();
 
             $file = $request->saveImage($request);
@@ -67,9 +69,11 @@ class PostController extends Controller
 
     public function destroy(Post $post): RedirectResponse
     {
-        Storage::disk('public')->delete($post->file->filepath);
+        if ($post['file_id'] != null){
+            $post->file->delete();
+            Storage::disk('public')->delete(explode("/", $post->file->filepath)[1]);
+        }
         $post->delete();
-        $post->file->delete();
         return redirect(route('posts.index'));
     }
 }
