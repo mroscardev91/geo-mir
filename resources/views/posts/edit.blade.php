@@ -7,15 +7,13 @@
                 name="message"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >{{ old('message', $post->message) }}</textarea>
-            @if (!empty($post->image))
-                <img src="{{ asset('storage/'. $post->image) }}" alt="Imagen de post">
-
+            @if (!empty($post->file))
+                <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
             @endif
             <input type="file" name="image">
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
-                <a href="{{ route('$post.index') }}">{{ __('Cancel') }}</a>
             </div>
         </form>
     </div>

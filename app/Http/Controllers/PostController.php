@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Post;
@@ -38,31 +39,39 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+    public function edit(Post $post): View
+    {
 
+        return view('posts.edit', [
+            'post' => $post,
+        ]);
+
+    }
     public function update(PostRequest $request, Post $post): RedirectResponse
     {
-        $this->authorize('update', $post);
-        $path = null;
-        if($request->hasFile("image" )){
-            $path = $request->saveImage($request);
-            Storage::delete($post->image);
-        }
-        $path = $path ?: $post->image;
-
         app('log')->info("Request Captured", $request->all());
-        $post->update(['message' => $request->input('message'), 'image' => $path]);
 
-        return redirect(route('chirps.index'));
+        $post->update(['message' => $request->input('message')]);
+
+        if($request->hasFile("image" )){
+            Storage::disk('public')->delete($post->file->filepath);
+            $post->file->delete();
+
+            $file = $request->saveImage($request);
+
+            $post->update(['file_id' => $file->id]);
+        }
+
+        return redirect(route('posts.index'));
     }
 
     public function destroy(Post $post): RedirectResponse
     {
-        $this->authorize('delete', $post);
-        if ($post->image) {
-            Storage::delete($post->image);
+        Storage::disk('public')->delete($post);
+        if($post->file->id != null){
+            $post->file->delete();
         }
         $post->delete();
-
-        return redirect(route('chirps.index'));
+        return redirect(route('posts.index'));
     }
 }
