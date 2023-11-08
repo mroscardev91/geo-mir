@@ -73,7 +73,7 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
-        Storage::disk('public')->delete($place->file->file);
+        Storage::disk('public')->delete($place->file->filepath);
         $place->delete();
         return redirect()->route('places.index')
         ->with('success', 'Place successfully deleted');
