@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Place;
 use App\Models\File;
@@ -72,6 +73,7 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
+        Storage::disk('public')->delete($place->file->file);
         $place->delete();
         return redirect()->route('places.index')
         ->with('success', 'Place successfully deleted');
