@@ -50,6 +50,9 @@
                                         {{ __('Delete') }}
                                     </x-dropdown-link>
                                 </form>
+                                <x-dropdown-link :href="route('posts.show', $post)">
+                                    {{ __('Show') }}
+                                </x-dropdown-link>
                             </x-slot>
 
                         </x-dropdown>

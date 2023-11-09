@@ -49,6 +49,16 @@ class PostController extends Controller
         ]);
 
     }
+
+    public function show(Post $post): View
+    {
+
+        return view('posts.show', [
+            'post' => $post,
+        ]);
+
+    }
+
     public function update(PostRequest $request, Post $post): RedirectResponse
     {
         app('log')->info("Request Captured", $request->all());
