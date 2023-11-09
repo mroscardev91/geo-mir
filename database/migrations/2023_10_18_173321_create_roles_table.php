@@ -11,33 +11,40 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('roles', function (Blueprint $table) {
-            $table->id(); // columna id, clave primaria y autoincremental
-            $table->string('name')->unique(); // columna name con restricción de unicidad
+            $table->id();
+            $table->string('name')->unique();
             $table->timestamps();
         });
+       
+        Artisan::call('db:seed', [
+            '--class' => 'RoleSeeder',
+            '--force' => true
+         ]);         
 
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id')->nullable(); // columna role_id con opción de valores null
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            // clave foránea para relacionar role_id con id de la tabla roles
+            $table->unsignedBigInteger('role_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
-         
+       
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        // Eliminar la clave foránea
-        $table->dropForeign(['role_id']);
-        // Eliminar la columna role_id
-        $table->dropColumn('role_id');
-    });
+    public function down()
+    {
+        // Eliminar la clave foránea de la tabla 'users'
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['role_id']);
+            $table->dropColumn('role_id');
+        });
 
-    // Eliminar la tabla roles
-    Schema::dropIfExists('roles');
-}
+        // Eliminar la tabla 'roles'
+        Schema::dropIfExists('roles');
+
+      
+         
+    }
 };
