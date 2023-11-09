@@ -24,7 +24,7 @@
                         @method('DELETE')
                         <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
                     </form>
-                    <a href="{{ route('places.index') }}" class="bg-sky-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Places</a>
+                    <a href="{{ route('places.index') }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Places</a>
                 </div>
             </div>
         </div>
