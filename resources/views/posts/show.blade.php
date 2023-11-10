@@ -19,7 +19,7 @@
             </div>
             <p>{{ old('message', $post->message) }}</textarea>
         @if (!empty($post->file))
-            <img class ="w-80 h-40" src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
+            <img  src="{{ asset( $post->file->filepath) }}" class ="w-80 h-40" alt="Imagen de Post">
         @endif
         </div>
     </div>
