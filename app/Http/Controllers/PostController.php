@@ -76,6 +76,11 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+    
+    public function likes ()
+    {
+        
+    }
 
     public function destroy(Post $post): RedirectResponse
     {
