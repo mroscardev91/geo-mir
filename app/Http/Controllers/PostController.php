@@ -41,6 +41,7 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+
     public function edit(Post $post): View
     {
 
@@ -77,9 +78,9 @@ class PostController extends Controller
         return redirect(route('posts.index'));
     }
     
-    public function likes ()
+    public function likes(Post $post)
     {
-        
+        dd('hola');
     }
 
     public function destroy(Post $post): RedirectResponse

@@ -62,7 +62,9 @@
                 @if (!empty($post->file))
                     <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
                 @endif
-            </div>
+                <br>
+                <a href="route('posts.likes', $post)">likes</a>
+            </div>  
         </div>
     @endforeach
 </div>
