@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\MailController;
@@ -11,6 +10,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 
 Route::resource('posts', PostController::class)
     ->only(['index', 'store', 'edit', 'show', 'update', 'destroy'])

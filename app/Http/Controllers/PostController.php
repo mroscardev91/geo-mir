@@ -2,25 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\File;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Post;
+use App\Models\Like;
+use App\Models\File;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
-use function PHPUnit\Framework\isEmpty;
+use Illuminate\Support\Facades\Log;
+
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('posts.index', [
-            'posts' => Post::with('user', 'file')->latest()->get(),
-        ]);
+        $posts = Post::with('user', 'file')->latest()->get();
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+   
+            // Realizar la búsqueda en la base de datos
+            foreach ($posts as $post){
+                $isLiked =Like::where('user_id',auth()->user()->id)
+                ->where('post_id', $post->id )
+                ->first();
+                if ($isLiked){
+                    $post->isLiked = True;
+                }else{
+                    $post->isLiked = False;
+                }
+            };
+
+            return view('posts.index', compact('posts'));
+        } else {
+            $posts = Post::withCount('liked')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+            
+            foreach ($posts as $post){
+                $isLiked =Like::where('user_id',auth()->user()->id)
+                ->where('post_id', $post->id )
+                ->first();
+                if ($isLiked){
+                    $post->isLiked = True;
+                }else{
+                    $post->isLiked = False;
+                }
+
+            }
+            return view("posts.index", [
+                "posts" => $posts
+            ]);
+        }
     }
 
     /**
@@ -41,6 +78,7 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+
     public function edit(Post $post): View
     {
 
@@ -85,5 +123,31 @@ class PostController extends Controller
         }
         $post->delete();
         return redirect(route('posts.index'));
+    }
+
+    public function like(Request $request, Post $post)
+    {
+        
+        $like =Like::where('user_id',auth()->user()->id)
+                    ->where('post_id', $post->id )
+                    ->first();
+        if($like){
+            $like->delete();
+            Log::debug("Like eliminado correctamente");
+            return redirect()->route('posts.index');
+           
+
+        }else{
+            $like = Like::create([
+                'user_id' => auth()->user()->id,
+                'post_id' => $post->id,
+            ]);
+            $isLiked=True;
+            Log::debug("Like creado correctamente");
+            return redirect()->route('posts.index');
+            
+        }
+
+        dd($$post);
     }
 }
