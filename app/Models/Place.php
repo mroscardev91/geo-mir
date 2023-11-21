@@ -30,15 +30,10 @@ class Place extends Model
         return $this->belongsTo(File::class);
     }
 
-    // Relació amb la taula reviews
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
     // Relació amb la taula favorites
-    public function favorites()
+    public function favorited()
     {
-        return $this->hasMany(Favorite::class);
-    }
+        return $this->belongsToMany(User::class, 'favorites');
+    }   
+
 }

@@ -17,7 +17,8 @@
                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name author</th>
-                               
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Favoritos</th>
+
                            </tr>
                        </thead>
                        <tbody class="bg-white divide-y divide-gray-200">
@@ -27,6 +28,7 @@
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->name }}</td>
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->description }}</td>
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->author->name }}</td>
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->favorited_count }}</td>                    
                                <td class="px-6 py-4 whitespace-nowrap"><a href="{{ route('places.show', $place) }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Show</a></td>
                            </tr>
                            @endforeach

@@ -14,7 +14,12 @@
                     @if($place->file)
                         <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
                     @endif
- 
+                    <form action="{{ route('places.favorite', ['place' => $place->id]) }}" method="POST">
+                        @csrf
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Agregar a favoritos</button>
+                    </form>
+                    
+                    <p>Favoritos: {{ $place->favorited_count }}</p>
                     <!-- Botón Editar -->
                     <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Editar</a>
  

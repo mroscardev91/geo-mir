@@ -41,8 +41,11 @@ Route::resource('files', FileController::class)
 /*Per generar rutes CRUD de places*/
 Route::resource('places', PlaceController::class)
 ->middleware(['auth', 'role.any:1,2,3']);
-/*Per generar rutes CRUD de favorites*/
-Route::resource('favorites', FavoriteController::class);
+
+// Favorite i unFavorite per a PlaceController
+Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite');
+
+
 /*Per generar rutes CRUD de reviews*/
 Route::resource('reviews', ReviewController::class);
 
