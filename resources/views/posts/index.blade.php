@@ -63,7 +63,16 @@
                     <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
                 @endif
                 <br>
-                <a href="route('posts.likes', $post)">likes</a>
+                <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
+                    @csrf
+                    @method('POST')
+                        <p></p>
+                        @if($post->isLiked)
+                            <button type="submit"><a>unlike</a> {{$post->liked_count}}</button>
+                        @else
+                            <button type="submit"> <a>like</a> {{$post->liked_count}}</button>
+                        @endif
+                  </form>                    
             </div>  
         </div>
     @endforeach

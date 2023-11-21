@@ -8,8 +8,10 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
@@ -18,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')
                   ->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
             // Eloquent does not support composite PK :-(
             // $table->primary(['user_id', 'post_id']);
         });
@@ -26,13 +29,16 @@ return new class extends Migration
             $table->id()->first();
             $table->unique(['user_id', 'post_id']);
         });
+ 
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('table_likes');
+        Schema::dropIfExists('likes');
     }
 };

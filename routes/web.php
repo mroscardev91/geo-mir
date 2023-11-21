@@ -63,7 +63,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+
 Route::resource('posts', PostController::class)
-    ->only(['index', 'store', 'edit', 'show', 'update', 'destroy', 'likes'])
+    ->only(['index', 'store', 'edit', 'show', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';
