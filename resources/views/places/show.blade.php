@@ -14,21 +14,25 @@
                     @if($place->file)
                         <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
                     @endif
+
+                    <p>Favoritos: {{ $place->favorited_count }}</p>
+
+                    @php
+                    $isFavorited = $place->favorited->contains('id', auth()->id());
+                    @endphp
+
                     <form action="{{ route('places.favorite', ['place' => $place->id]) }}" method="POST">
                         @csrf
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Agregar a favoritos</button>
+                        <button class="text-3xl bg-transparent border-none hover:text-yellow-500 focus:outline-none mb-5">
+                            {{ $isFavorited ? '⭐️' : '✩' }}
+                        </button>
                     </form>
-                    
-                    <p>Favoritos: {{ $place->favorited_count }}</p>
+
+
                     <!-- Botón Editar -->
-                    <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Editar</a>
- 
-                    <!-- Botón Eliminar -->
-                    <form action="{{ route('places.destroy', $place) }}" method="POST" class="mt-4 inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
-                    </form>
+                    <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-4">Editar</a>
+
+
                     <a href="{{ route('places.index') }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Places</a>
                 </div>
             </div>

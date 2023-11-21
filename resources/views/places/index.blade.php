@@ -28,7 +28,17 @@
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->name }}</td>
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->description }}</td>
                                <td class="px-6 py-4 whitespace-nowrap">{{ $place->author->name }}</td>
-                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->favorited_count }}</td>                    
+                               <td class="px-6 py-4 whitespace-nowrap">{{ $place->favorited_count }}</td>
+                               <td class="px-6 py-4 whitespace-nowrap">@php
+                                $isFavorited = $place->favorited->contains('id', auth()->id());
+                                @endphp
+            
+                                <form action="{{ route('places.favorite', ['place' => $place->id]) }}" method="POST">
+                                    @csrf
+                                    <button class="text-3xl bg-transparent border-none hover:text-yellow-500 focus:outline-none mb-5">
+                                        {{ $isFavorited ? '⭐️' : '✩' }}
+                                    </button>
+                                </form></td>                       
                                <td class="px-6 py-4 whitespace-nowrap"><a href="{{ route('places.show', $place) }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Show</a></td>
                            </tr>
                            @endforeach

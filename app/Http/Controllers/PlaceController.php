@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Log;
+use Illuminate\Support\Facades\Log;
 use App\Models\Place;
 use App\Models\File;
 use App\Models\User;
@@ -108,7 +108,7 @@ class PlaceController extends Controller
         if($favorite){
             $favorite->delete();
             Log::debug("Fav eliminado");
-            return redirect()->route("places.index");
+            return redirect()->back();
         } else {
             $favorite = Favorite::create([
                 'user_id' => auth()->user()->id,
