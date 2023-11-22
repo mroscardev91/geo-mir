@@ -30,6 +30,9 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
+// Home
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 /*Per enviar mails*/
 Route::get('mail/test', [MailController::class, 'test']);
 
@@ -63,8 +66,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 
