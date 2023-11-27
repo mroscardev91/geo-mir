@@ -15,8 +15,7 @@ class FilePolicy
     public function viewAny(User $user): bool
     {
 
-        if (auth()->user()->role_id == 3)
-        {
+        if (auth()->user()->role_id == 3){
             return true;
         }else{
             return false;

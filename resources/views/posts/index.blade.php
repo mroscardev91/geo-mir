@@ -1,6 +1,8 @@
 
 <x-app-layout>
+    
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+        @can('create', App\Models\Post::class)
         <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
             <textarea
@@ -12,7 +14,7 @@
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             <x-primary-button class="mt-4">{{ __('Post') }}</x-primary-button>
         </form>
-
+        @endcan
 
 
 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
@@ -31,6 +33,7 @@
                         @endunless
                     </div>
                     @if ($post->user->is(auth()->user()))
+                    @can('viewAny', App\Models\Post::class)
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
