@@ -35,12 +35,12 @@ Route::get('mail/test', [MailController::class, 'test']);
 
 /*Per generar rutes CRUD de files*/
 Route::resource('files', FileController::class)
-->middleware(['auth', 'role.any:1,2,3']);
+->middleware(['auth']);
 
 
 /*Per generar rutes CRUD de places*/
 Route::resource('places', PlaceController::class)
-->middleware(['auth', 'role.any:1,2,3']);
+->middleware(['auth']);
 
 // Favorite i unFavorite per a PlaceController
 Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite');
