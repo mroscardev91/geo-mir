@@ -13,10 +13,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        if (auth()->user())
-        {
-            return true;
-        }
+        return $user == auth()->user();
     }
 
     // /**
@@ -32,40 +29,31 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        if (auth()->user()->role_id == 1){
-            return true;
-        }else{
-            return false;
-        } 
+        return $user->role_id == 1;
+    }
+
+    public function like (User $user): bool
+    {
+        return $user->role_id == 1;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function edit_delete(User $user, Post $post): bool
+
+     //Falta hacer que solo puedan eliminar los posts que ellos mismos han creado
+    public function update(User $user, Post $post): bool
     {
-        if (auth()->user()->role_id == 1){
-            return true;
-        }else{
-            return false;
-        } 
+        return $user->role_id == 1 && $post->author_id == $user->id || $user->role_id == 2;
     }
 
-    // /**
-    //  * Determine whether the user can update the model.
-    //  */
-    // public function update(User $user, Post $post): bool
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Determine whether the user can delete the model.
-    //  */
-    // public function delete(User $user, Post $post): bool
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can delete the model.
+     */
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->role_id == 1 && $post->author_id == $user->id || $user->role_id == 2;
+    }
 
     // /**
     //  * Determine whether the user can restore the model.

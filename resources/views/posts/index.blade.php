@@ -32,8 +32,6 @@
                             <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
                         @endunless
                     </div>
-                    @if ($post->user->is(auth()->user()))
-                    @can('viewAny', App\Models\Post::class)
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
@@ -43,9 +41,12 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('posts.edit', $post)">
-                                    {{ __('Edit') }}
-                                </x-dropdown-link>
+                                @can('update', $post)
+                                    <x-dropdown-link :href="route('posts.edit', $post)">
+                                        {{ __('Edit') }}
+                                    </x-dropdown-link>
+                                @endcan
+                                @can('delete', $post)
                                 <form method="POST" action="{{ route('posts.destroy', $post) }}">
                                     @csrf
                                     @method('delete')
@@ -53,29 +54,30 @@
                                         {{ __('Delete') }}
                                     </x-dropdown-link>
                                 </form>
+                                @endcan
                                 <x-dropdown-link :href="route('posts.show', $post)">
                                     {{ __('Show') }}
                                 </x-dropdown-link>
                             </x-slot>
-
                         </x-dropdown>
-                    @endif
                 </div>
                 <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                 @if (!empty($post->file))
                     <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
                 @endif
                 <br>
-                <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
-                    @csrf
-                    @method('POST')
-                        <p></p>
-                        @if($post->isLiked)
-                            <button type="submit"><a>unlike</a> {{$post->liked_count}}</button>
-                        @else
-                            <button type="submit"> <a>like</a> {{$post->liked_count}}</button>
-                        @endif
-                  </form>                    
+                @can('like', App\Models\Post::class)
+                    <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
+                        @csrf
+                        @method('POST')
+                            <p></p>
+                            @if($post->isLiked)
+                                <button type="submit"><a>unlike</a> {{$post->liked_count}}</button>
+                            @else
+                                <button type="submit"> <a>like</a> {{$post->liked_count}}</button>
+                            @endif
+                    </form> 
+                  @endcan                   
             </div>  
         </div>
     @endforeach
