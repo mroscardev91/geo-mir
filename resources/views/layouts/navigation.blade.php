@@ -64,7 +64,9 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                <x-language-switcher/>
             </div>
+            
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">

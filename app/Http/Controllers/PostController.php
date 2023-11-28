@@ -155,6 +155,5 @@ class PostController extends Controller
             
         }
 
-        dd($$post);
     }
 }

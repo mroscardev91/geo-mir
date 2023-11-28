@@ -83,7 +83,14 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ca',
+    'fallback_locale' => 'en',
+    'available_locales' => [
+        'ca' => 'Català',
+        'es' => 'Castellano',
+        'en' => 'English',
+    ],
+ 
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +103,6 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,5 +190,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
+
 
 ];

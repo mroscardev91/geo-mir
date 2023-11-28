@@ -11,6 +11,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::get('/', function (Request $request) {
 
 /*Per enviar mails*/
 Route::get('mail/test', [MailController::class, 'test']);
+
+Route::get('/language/{locale}', [LanguageController::class, 'language'])->name('language');
 
 /*Per generar rutes CRUD de files*/
 Route::resource('files', FileController::class)
