@@ -31,6 +31,9 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
+// Home
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 /*Per enviar mails*/
 Route::get('mail/test', [MailController::class, 'test']);
 
@@ -46,7 +49,8 @@ Route::resource('places', PlaceController::class)
 ->middleware(['auth']);
 
 // Favorite i unFavorite per a PlaceController
-Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite');
+Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite')
+->middleware('can:Favorite,place');
 
 
 /*Per generar rutes CRUD de reviews*/
@@ -66,8 +70,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 
