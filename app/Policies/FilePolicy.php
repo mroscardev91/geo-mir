@@ -29,7 +29,6 @@ class FilePolicy
     // {
     //     //
     // }
-
     // /**
     //  * Determine whether the user can create models.
     //  */

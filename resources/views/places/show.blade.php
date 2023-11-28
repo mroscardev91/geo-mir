@@ -15,23 +15,34 @@
                         <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
                     @endif
 
-                    <p>Favoritos: {{ $place->favorited_count }}</p>
+                    @can('Favorite', $place)
+                        <p>Favoritos: {{ $place->favorited_count }}</p>
 
-                    @php
-                    $isFavorited = $place->favorited->contains('id', auth()->id());
-                    @endphp
-
-                    <form action="{{ route('places.favorite', ['place' => $place->id]) }}" method="POST">
-                        @csrf
-                        <button class="text-3xl bg-transparent border-none hover:text-yellow-500 focus:outline-none mb-5">
-                            {{ $isFavorited ? '⭐️' : '✩' }}
-                        </button>
-                    </form>
-
+                        @php
+                        $isFavorited = $place->favorited->contains('id', auth()->id());
+                        @endphp
+                        <form action="{{ route('places.favorite', ['place' => $place->id]) }}" method="POST">
+                            @csrf
+                            <button class="text-3xl bg-transparent border-none hover:text-yellow-500 focus:outline-none mb-5">
+                                {{ $isFavorited ? '⭐️' : '✩' }}
+                            </button>
+                        </form>
+                    @endcan
+                    
 
                     <!-- Botón Editar -->
-                    <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-4">Editar</a>
+                    @can('update', $place)
+                        <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-6">Editar</a>
+                    @endcan
 
+                    @can('delete', $place)
+                        <!-- Botón Eliminar -->
+                        <form action="{{ route('places.destroy', $place) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-400 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-2 mb-4">Eliminar</button>
+                        </form>
+                    @endcan
 
                     <a href="{{ route('places.index') }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Places</a>
                 </div>
