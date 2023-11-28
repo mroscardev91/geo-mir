@@ -46,7 +46,8 @@ Route::resource('places', PlaceController::class)
 ->middleware(['auth']);
 
 // Favorite i unFavorite per a PlaceController
-Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite');
+Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name('places.favorite')
+->middleware('can:Favorite,place');
 
 
 /*Per generar rutes CRUD de reviews*/
