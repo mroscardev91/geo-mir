@@ -44,7 +44,7 @@ class PostPolicy
      //Falta hacer que solo puedan eliminar los posts que ellos mismos han creado
     public function update(User $user, Post $post): bool
     {
-        return $user->role_id == 1 && $post->author_id == $user->id || $user->role_id == 2;
+        return $user->role_id == 1 && $post->author_id == $user->id;
     }
 
     /**
