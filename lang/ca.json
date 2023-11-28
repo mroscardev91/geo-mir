@@ -9,7 +9,18 @@
     "unlike": "desagradar",
     "Posts": "Publicacions",
     "Places": "Llocs",
-    "Dashboard": "Tauler de control"
+    "Dashboard": "Tauler de control",
+    "Create Place" : "Crear lloc",
+    "Name" : "Nom",
+    "Description": "Descripció",
+    "Name Author": "Nom de l'autor",
+    "Favoritos" : "Favorits",
+    "Details for Place Id: " : "Detalls de la ID del lloc ",
+    "File Image" : "Arxiu imatge",
+    "Actualitzar": "Actualitzar",
+    "Guardar" : "Guardar",
+    "File" : "Arxiu",
+    "Tornar a enrere" : "Tornar a enrere"
 
  }
  

@@ -9,7 +9,18 @@
     "unlike": "No mw gustar",
     "Posts": "Publicaciones",
     "Places": "Lugares",
-    "Dashboard": "Tablero de control"
+    "Dashboard": "Tablero de control",
+    "Create Place" : "Crear lugar",
+    "Name" : "Nombre",
+    "Description": "Descripción",
+    "Name Author": "Nombre del Autor",
+    "Favoritos" : "Favoritos",
+    "Details for Place Id: " : "Detalles de la ID del lugar ",
+    "File Image" : "Archivo imagen",
+    "Actualitzar" : "Actualitzar",
+    "Guardar" : "Guardar",
+    "File" : "Archivo",
+    "Tornar a enrere" : "Volver Atras"
 
  }
  

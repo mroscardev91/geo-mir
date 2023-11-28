@@ -13,8 +13,8 @@
                     <!-- Mostrar las datos del place -->
                     <div class="space-y-2">
                         <p><strong>ID:</strong> {{ $place->id }}</p>
-                        <p><strong>Name:</strong> {{ $place->name }}</p>
-                        <p><strong>Description:</strong> {{ $place->description }}</p>
+                        <p><strong>{{__('Name')}}:</strong> {{ $place->name }}</p>
+                        <p><strong>{{__('Description')}}:</strong> {{ $place->description }}</p>
                     </div>
 
                     <!-- Formulario para actualizar un place -->
@@ -22,18 +22,18 @@
                         @csrf
                         @method('PUT')
                         <div>
-                            <label class="block text-gray-700">Nom:</label>
+                            <label class="block text-gray-700">{{__('Nom')}}:</label>
                             <input type="text" name="name" value="{{ $place->name }}" required class="mt-1 p-2 w-full border rounded-md">
                         </div>
                         <div>
-                            <label class="block text-gray-700">Descripció:</label>
+                            <label class="block text-gray-700">{{__('Description')}}:</label>
                             <textarea name="description" class="mt-1 p-2 w-full border rounded-md">{{ $place->description }}</textarea>
                         </div>
                         <div>
-                            <label class="block text-gray-700">Fitxer:</label>
+                            <label class="block text-gray-700">{{__('File')}}:</label>
                             <input type="file" name="file" class="mt-1 p-2 w-full border rounded-md">
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Actualitzar</button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('Actualitzar')}}</button>
                     </form>
 
                 </div>
