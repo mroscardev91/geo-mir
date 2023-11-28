@@ -16,12 +16,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @can('viewAny', App\Models\Post::class)
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+                    @endcan
+                    @can('viewAny', App\Models\File::class)
                     <x-nav-link :href="route('files.index')" :active="request()->routeIs('files.index')">
                         {{ __('Files') }}
                     </x-nav-link>
+                    @endcan
                     <x-nav-link :href="route('places.index')" :active="request()->routeIs('places.index')">
                         {{ __('Places') }}
                     </x-nav-link>

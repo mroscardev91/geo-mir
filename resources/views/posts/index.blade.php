@@ -1,6 +1,8 @@
 
 <x-app-layout>
+    
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+        @can('create', App\Models\Post::class)
         <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
             <textarea
@@ -12,7 +14,7 @@
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             <x-primary-button class="mt-4">{{ __('Post') }}</x-primary-button>
         </form>
-
+        @endcan
 
 
 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
@@ -30,7 +32,6 @@
                             <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
                         @endunless
                     </div>
-                    @if ($post->user->is(auth()->user()))
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
@@ -40,9 +41,12 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('posts.edit', $post)">
-                                    {{ __('Edit') }}
-                                </x-dropdown-link>
+                                @can('update', $post)
+                                    <x-dropdown-link :href="route('posts.edit', $post)">
+                                        {{ __('Edit') }}
+                                    </x-dropdown-link>
+                                @endcan
+                                @can('delete', $post)
                                 <form method="POST" action="{{ route('posts.destroy', $post) }}">
                                     @csrf
                                     @method('delete')
@@ -50,29 +54,30 @@
                                         {{ __('Delete') }}
                                     </x-dropdown-link>
                                 </form>
+                                @endcan
                                 <x-dropdown-link :href="route('posts.show', $post)">
                                     {{ __('Show') }}
                                 </x-dropdown-link>
                             </x-slot>
-
                         </x-dropdown>
-                    @endif
                 </div>
                 <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                 @if (!empty($post->file))
                     <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
                 @endif
                 <br>
-                <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
-                    @csrf
-                    @method('POST')
-                        <p></p>
-                        @if($post->isLiked)
-                            <button type="submit"><a>unlike</a> {{$post->liked_count}}</button>
-                        @else
-                            <button type="submit"> <a>like</a> {{$post->liked_count}}</button>
-                        @endif
-                  </form>                    
+                @can('like', App\Models\Post::class)
+                    <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
+                        @csrf
+                        @method('POST')
+                            <p></p>
+                            @if($post->isLiked)
+                                <button type="submit"><a>unlike</a> {{$post->liked_count}}</button>
+                            @else
+                                <button type="submit"> <a>like</a> {{$post->liked_count}}</button>
+                            @endif
+                    </form> 
+                  @endcan                   
             </div>  
         </div>
     @endforeach

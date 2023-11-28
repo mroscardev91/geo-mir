@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -127,6 +133,7 @@ class PostController extends Controller
 
     public function like(Request $request, Post $post)
     {
+        $this->authorize('like');
         
         $like =Like::where('user_id',auth()->user()->id)
                     ->where('post_id', $post->id )
