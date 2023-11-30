@@ -14,13 +14,18 @@
     "Name" : "Nom",
     "Description": "Descripció",
     "Name Author": "Nom de l'autor",
+    "Author id": "Autor id",
     "Favoritos" : "Favorits",
     "Details for Place Id: " : "Detalls de la ID del lloc ",
     "File Image" : "Arxiu imatge",
     "Actualitzar": "Actualitzar",
     "Guardar" : "Guardar",
     "File" : "Arxiu",
-    "Tornar a enrere" : "Tornar a enrere"
+    "File id" : "Arxiu id",
+    "Tornar a enrere" : "Tornar a enrere",
+    "Created at" : "Creat en",
+    "Updated at" : "Actualitzat en",
+    "Message" : "Missatge"
 
  }
  

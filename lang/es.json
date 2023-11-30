@@ -20,7 +20,12 @@
     "Actualitzar" : "Actualitzar",
     "Guardar" : "Guardar",
     "File" : "Archivo",
-    "Tornar a enrere" : "Volver Atras"
+    "File id" : "Archivo id",
+    "Tornar a enrere" : "Volver Atras",
+    "Created at" : "Creado en",
+    "Updated at" : "Actualizado en",
+    "Message" : "Mensaje"
+
 
  }
  
