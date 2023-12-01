@@ -27,6 +27,11 @@ return new class extends Migration
             $table->unsignedBigInteger('visibility_id')->nullable();
             $table->foreign('visibility_id')->references('id')->on('visibilities');
         });
+
+        Schema::table('places', function (Blueprint $table) {
+            $table->unsignedBigInteger('visibility_id')->nullable();
+            $table->foreign('visibility_id')->references('id')->on('visibilities');
+        });
        
     }
 
@@ -37,6 +42,11 @@ return new class extends Migration
     {
         // Eliminar la clave foránea de la tabla 'posts'
         Schema::table('posts', function (Blueprint $table) {
+            $table->dropForeign(['visibility_id']);
+            $table->dropColumn('visibility_id');
+        });
+
+        Schema::table('places', function (Blueprint $table) {
             $table->dropForeign(['visibility_id']);
             $table->dropColumn('visibility_id');
         });

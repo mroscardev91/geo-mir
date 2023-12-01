@@ -34,6 +34,12 @@
                             <label class="block text-gray-700">{{__('File')}}:</label>
                             <input type="file" name="file" class="mt-1 p-2 w-full border rounded-md">
                         </div>
+                        <select name="visibility">
+                            <option value="1">{{__('Public')}}</option>
+                            <option value="2">{{__('Contacts')}}</option>
+                            <option value="3">{{__('Private')}}</option>
+                        </select>
+                        
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('Guardar')}}</button>
                         <a href="{{ route('places.index') }}" class="bg-sky-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">{{__('Tornar a enrere')}}</a>
                     </form>

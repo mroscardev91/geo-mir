@@ -9,7 +9,7 @@ class Place extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'file_id', 'author_id'];
+    protected $fillable = ['name', 'description', 'file_id', 'author_id', 'visibility_id'];
 
     //relacio amb la taula users, utilizant author_idz
     public function user()
@@ -35,5 +35,10 @@ class Place extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }   
+
+    public function visibilities()
+    {
+        return $this->belongsTo(Visibility::class, 'visibility_id' );
+    }
 
 }

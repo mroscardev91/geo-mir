@@ -48,6 +48,7 @@ class PlaceController extends Controller
         $data = $request->all();
         $data['file_id'] = $fileId;
 
+        $data['visibility_id'] = $request->input('visibility');
         $data['author_id'] = auth()->id();
         Place::create($data);
 

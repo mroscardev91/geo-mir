@@ -9,8 +9,15 @@ class Visibility extends Model
 {
     use HasFactory;
 
-    public function visibilities()
+    public function posts()
     {
-        return $this->hasMany(Visibility::class, 'visibility_id');
+        return $this->hasMany(Post::class, 'visibility_id');
     }
+
+    public function places()
+    {
+        return $this->hasMany(Place::class, 'visibility_id');
+    }
+
+    
 }
