@@ -79,7 +79,8 @@ class PostController extends Controller
 
         $request->user()->posts()->create([
             'message' => $request->input('message'),
-            'file_id' => $file ? $file->id : null
+            'file_id' => $file ? $file->id : null,
+            'visibility_id' => $request->input('visibility')
         ]);
 
         return redirect(route('posts.index'));

@@ -43,13 +43,14 @@ class User extends Authenticatable implements FilamentUser
     }
     public function canAccessFilament() : bool
     {
-        return $this->role_id === 3 || $this->role_id === 2 ;
+        return $this->role_id === 3 || $this->role_id === 1 ;
     }
     
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
+
 
 
 

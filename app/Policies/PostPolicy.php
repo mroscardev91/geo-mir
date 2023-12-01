@@ -16,13 +16,13 @@ class PostPolicy
         return $user == auth()->user();
     }
 
-    // /**
-    //  * Determine whether the user can view the model.
-    //  */
-    // public function view(User $user, Post $post): bool
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, Post $post): bool
+    {
+        return $post['visibility_id'] == 1 || ($post['visibility_id'] == 3 && $post->user->is(auth()->user())) ||auth()->user()->role_id == 2;
+    }
 
     /**
      * Determine whether the user can create models.
