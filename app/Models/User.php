@@ -54,6 +54,7 @@ class User extends Authenticatable implements FilamentUser
 
 
 
+
     protected static function boot()
     {
         parent::boot();
