@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Places') }}
             @can('create', App\Models\Place::class)
-                <a href="{{ route('places.create') }}" class="text-l hover:bg-sky-500 text-black font-bold py-2 px-1 ml-2 rounded">📍Create Place</a>
+                <a href="{{ route('places.create') }}" class="text-l hover:bg-sky-500 text-black font-bold py-2 px-1 ml-2 rounded">📍{{__('Create Place')}}</a>
             @endcan
             
         </h2>
@@ -17,10 +17,10 @@
                        <thead class="bg-gray-50">
                            <tr>
                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name author</th>
-                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Favoritos</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{__('Name')}}</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{__('Description')}}</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{__('Name Author')}}</th>
+                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{__('Favoritos')}}</th>
 
                            </tr>
                        </thead>
@@ -44,7 +44,7 @@
                                         </button>
                                     </form></td>
                                 @endcan                       
-                               <td class="px-6 py-4 whitespace-nowrap"><a href="{{ route('places.show', $place) }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Show</a></td>
+                               <td class="px-6 py-4 whitespace-nowrap"><a href="{{ route('places.show', $place) }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">{{__('Show')}}</a></td>
                            </tr>
                            @endforeach
                        </tbody>

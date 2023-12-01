@@ -12,11 +12,11 @@
                     <h1 class="text-2xl font-bold">{{ $place->name }}</h1>
                     <p class="text-gray-700">{{ $place->description }}</p>
                     @if($place->file)
-                        <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="File Image">
+                        <img class="img-fluid rounded shadow-md" src="{{ asset("storage/{$place->file->filepath}") }}" alt="{{__('File Image')}}">
                     @endif
 
                     @can('Favorite', $place)
-                        <p>Favoritos: {{ $place->favorited_count }}</p>
+                        <p>{{__('Favoritos')}}: {{ $place->favorited_count }}</p>
 
                         @php
                         $isFavorited = $place->favorited->contains('id', auth()->id());
@@ -32,7 +32,7 @@
 
                     <!-- Botón Editar -->
                     @can('update', $place)
-                        <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-6">Editar</a>
+                        <a href="{{ route('places.edit', $place) }}" class="bg-yellow-300 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-6">{{__('Editar')}}</a>
                     @endcan
 
                     @can('delete', $place)
@@ -40,11 +40,11 @@
                         <form action="{{ route('places.destroy', $place) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="bg-red-400 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-2 mb-4">Eliminar</button>
+                            <button class="bg-red-400 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded mt-2 mb-4">{{__('Eliminar')}}</button>
                         </form>
                     @endcan
 
-                    <a href="{{ route('places.index') }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Places</a>
+                    <a href="{{ route('places.index') }}" class="bg-blue-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">{{__('Places')}}</a>
                 </div>
             </div>
         </div>

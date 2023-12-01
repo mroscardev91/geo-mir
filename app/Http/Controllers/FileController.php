@@ -155,11 +155,11 @@ class FileController extends Controller
 
         // Redirigir a show amb missatge d'èxit
         return redirect()->route('files.show', $file)
-            ->with('success', 'File successfully updated');
+            ->with('success', __('File successfully saved'));
     } else {
         // En cas contrari, redirigir a edit amb missatge d'error
         return redirect()->route('files.edit', $file)
-            ->with('error', 'ERROR updating file');
+            ->with('error', __('ERROR updating file'));
     }
 }
 

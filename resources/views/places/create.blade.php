@@ -23,19 +23,19 @@
                     <form method="post" action="{{ route('places.store') }}" enctype="multipart/form-data" class="space-y-4">
                         @csrf
                         <div>
-                            <label class="block text-gray-700">Nom:</label>
+                            <label class="block text-gray-700">{{__('Name')}}:</label>
                             <input type="text" name="name" required class="mt-1 p-2 w-full border rounded-md">
                         </div>
                         <div>
-                            <label class="block text-gray-700">Descripció:</label>
+                            <label class="block text-gray-700">{{__('Description')}}:</label>
                             <textarea name="description" class="mt-1 p-2 w-full border rounded-md"></textarea>
                         </div>
                         <div>
-                            <label class="block text-gray-700">Fitxer:</label>
+                            <label class="block text-gray-700">{{__('File')}}:</label>
                             <input type="file" name="file" class="mt-1 p-2 w-full border rounded-md">
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
-                        <a href="{{ route('places.index') }}" class="bg-sky-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">Tornar a enrere</a>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('Guardar')}}</button>
+                        <a href="{{ route('places.index') }}" class="bg-sky-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">{{__('Tornar a enrere')}}</a>
                     </form>
 
                 </div>
