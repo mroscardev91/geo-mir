@@ -73,6 +73,7 @@ class PlaceResource extends Resource
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')->translateLabel()
                     ->dateTime(),
+                Tables\Columns\TextColumn::make('visibility_id')->translateLabel(),
             ])
             ->filters([
                 //

@@ -13,7 +13,8 @@ class Post extends Model
         'message',
         'image',
         'author_id',
-        'file_id'
+        'file_id',
+        'visibility_id'
     ];
 
     public function user()
@@ -31,5 +32,9 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'likes');
     }
 
+    public function visibilities()
+    {
+        return $this->belongsTo(Visibility::class, 'visibility_id' );
+    }
 
 }

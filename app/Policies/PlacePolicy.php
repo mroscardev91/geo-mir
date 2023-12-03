@@ -14,7 +14,7 @@ class PlacePolicy
 
     public function view(User $user, Place $place)
     {
-        return true;
+        return $place['visibility_id'] == 1 || ($place['visibility_id'] == 3 && $place->user->is(auth()->user())) ||auth()->user()->role_id == 2;
     }
 
     public function create(User $user)
