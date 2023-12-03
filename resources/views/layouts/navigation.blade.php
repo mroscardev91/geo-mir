@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-purple-200 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -52,8 +52,12 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-400 underline mx-4">Login</a>
-                    <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-400 underline mx-5">Register</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 bg-purple-600 text-white text-sm rounded hover:bg-purple-700 transition duration-300 ease-in-out mx-2">
+                        Login
+                    </a>
+                    <a href="{{ route('register') }}" class="px-4 py-2 bg-purple-400 text-white text-sm rounded hover:bg-purple-400 transition duration-300 ease-in-out mx-2">
+                        Register
+                    </a>
                 @endauth
             </div>
 
