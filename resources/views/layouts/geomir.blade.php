@@ -28,6 +28,6 @@
     <body class="font-sans antialiased">
        @yield('header')
        @yield('content')
-        @yield('footer')
+       @yield('footer')
     </body>
 </html>

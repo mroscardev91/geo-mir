@@ -1,6 +1,6 @@
 @extends('layouts.geomir')
 @section('header')
-    @include('layouts.navigation')
+    <x-navigation />
 @endsection
 
 @section('content')
