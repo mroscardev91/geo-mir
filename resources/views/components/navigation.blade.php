@@ -59,6 +59,8 @@
                         Register
                     </a>
                 @endauth
+                
+                <x-language-switcher/>
             </div>
 
             <!-- Hamburger -->
@@ -109,6 +111,7 @@
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-400 underline">Login</a>
                 </div>
             @endauth
+            <x-language-switcher/>
         </div>
     </div>
 </nav>

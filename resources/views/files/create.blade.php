@@ -24,6 +24,7 @@
                         <div class="form-group">
                             <label for="upload">File:</label>
                             <input type="file" class="form-control" name="upload"/>
+                            <div id="file-upload-error" class="text-danger"></div>
                         </div>
                         <button type="submit" class="btn btn-primary">Create</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
@@ -31,6 +32,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    
     </div>
  </x-app-layout>
  

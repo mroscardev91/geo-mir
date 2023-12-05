@@ -15,11 +15,8 @@ class FilePolicy
     public function viewAny(User $user): bool
     {
 
-        if (auth()->user()->role_id == 3){
-            return true;
-        }else{
-            return false;
-        }
+        return auth()->user()->role_id == 3;
+
     }
 
     // /**
@@ -27,14 +24,14 @@ class FilePolicy
     //  */
     // public function view(User $user, File $file): bool
     // {
-    //     //
+    //     return true;
     // }
     // /**
     //  * Determine whether the user can create models.
     //  */
     // public function create(User $user): bool
     // {
-    //     //
+    //     return true;
     // }
 
     // /**
@@ -42,7 +39,7 @@ class FilePolicy
     //  */
     // public function update(User $user, File $file): bool
     // {
-    //     //
+    //     return true;
     // }
 
     // /**
@@ -50,7 +47,7 @@ class FilePolicy
     //  */
     // public function delete(User $user, File $file): bool
     // {
-    //     //
+    //     return true;
     // }
 
     // /**
@@ -58,7 +55,7 @@ class FilePolicy
     //  */
     // public function restore(User $user, File $file): bool
     // {
-    //     //
+    //     return true;
     // }
 
     // /**
@@ -66,6 +63,6 @@ class FilePolicy
     //  */
     // public function forceDelete(User $user, File $file): bool
     // {
-    //     //
+    //     return true;
     // }
 }

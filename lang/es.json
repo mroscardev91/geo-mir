@@ -25,7 +25,11 @@
     "Created at" : "Creado en",
     "Updated at" : "Actualizado en",
     "Message" : "Mensaje",
-    "visibility_id": "Visibilidad"
+    "visibility_id": "Visibilidad",
+    "Bienvenido a Nuestro Sitio" : "Bienvenido a Nuestro Sitio",
+    "Public" : "Publico",
+    "Contacts": "Contactos",
+    "Private": "Privado"
 
 
  }
