@@ -3,7 +3,7 @@
     @include('layouts.navigation')
     @can('create', App\Models\Place::class)
         <div class="flex justify-center bg-purple-400">
-            <a href="{{ route('places.create') }}" class="text-l hover:bg-sky-500 text-black font-bold py-2 px-1 rounded">
+            <a href="{{ route('places.create') }}" class="text-l hover:bg-purple-600 text-black font-bold py-2 px-1 rounded">
                 📍{{__('Create Place')}}
             </a>
         </div>
@@ -31,6 +31,7 @@
                         </div>
                         <div class="px-6 py-4 bg-purple-600 flex justify-end items-center">
                             @can('Favorite', $place)
+                                <p>{{ $place->favorited_count }}</p>
                                 @php
                                     $isFavorited = $place->favorited->contains('id', auth()->id());
                                 @endphp

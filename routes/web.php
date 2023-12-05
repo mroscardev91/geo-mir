@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutOscarController;
 use App\Http\Controllers\AboutAlexController;
+use App\Http\Controllers\AboutGeneralController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -40,6 +41,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // About Us
 Route::get('/about-oscar', [AboutOscarController::class, 'index']);
 Route::get('/about-alex', [AboutAlexController::class, 'index']);
+Route::get('/about', [AboutGeneralController::class, 'index']);
 
 
 /*Per enviar mails*/

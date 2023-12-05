@@ -4,6 +4,11 @@
 @endsection
 
 @section('content')
+    <div class="mt-auto bg-purple-500 text-white p-4 text-center">
+        <a href="about-oscar" target="_blank" class="mx-2 hover:underline">About Òscar</a>
+        <a href="about" target="_blank" class="mx-2 hover:underline">About Us</a>
+        <a href="about-alex" target="_blank" class="mx-2 hover:underline">About Alex</a>
+    </div>
     <div class="bg-purple-400 flex items-center justify-center h-screen">
         <div class="text-center">
             <h1 class="text-4xl font-bold text-gray-800 mb-8">👋{{__('Bienvenido a Nuestro Sitio')}}</h1>
@@ -17,9 +22,9 @@
                     {{__('Posts')}}
                 </a>
             </div>
-        </div>
-        <!-- Aquí puedes incluir más contenido HTML si lo necesitas -->
+        </div>   
     </div>
+
 @endsection
 
 @section('footer')
