@@ -2,6 +2,7 @@ import './bootstrap';
 import './files/create';
 import './posts/create';
 import './posts/edit';
+import './twe.js';
 
 
 import './places/create';
