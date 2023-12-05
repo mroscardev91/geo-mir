@@ -134,7 +134,7 @@ class PostController extends Controller
 
     public function like(Request $request, Post $post)
     {
-        $this->authorize('like');
+        $this->authorize('like', App\Models\Post::class);
         
         $like =Like::where('user_id',auth()->user()->id)
                     ->where('post_id', $post->id )

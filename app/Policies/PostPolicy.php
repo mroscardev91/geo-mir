@@ -32,7 +32,7 @@ class PostPolicy
         return $user->role_id == 1;
     }
 
-    public function like (User $user): bool
+    public function like(User $user): bool
     {
         return $user->role_id == 1;
     }

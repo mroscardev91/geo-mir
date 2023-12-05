@@ -19,7 +19,7 @@
                     </div>
                     @endif
  
-                    <form method="post" action="{{ route('files.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('files.store') }}" enctype="multipart/form-data" id="create-file-form">
                         @csrf
                         <div class="form-group">
                             <label for="upload">File:</label>
