@@ -73,7 +73,7 @@
                         <img src="{{ asset( $post->file->filepath) }}" alt="Imagen de Post">
                     @endif
                     <br>
-                    @can('like', App\Models\Post::class)
+                    @can('like', $post)
                         <form action="{{ route('posts.like', ['post' => $post->id]) }}" method="post">
                             @csrf
                             @method('POST')
