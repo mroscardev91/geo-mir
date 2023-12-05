@@ -8,7 +8,7 @@
 <div class="bg-purple-400"> 
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
         @can('create', App\Models\Post::class)
-            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" id="create-posts">
                 @csrf
                 <textarea
                     name="message"
@@ -21,7 +21,8 @@
                     <option value="2">{{__('Contacts')}}</option>
                     <option value="3">{{__('Private')}}</option>
                 </select>
-                <x-input-error :messages="$errors->get('message')" class="mt-2" />
+                <div id="message-error" class="text-danger"></div>
+                {{-- <x-input-error :messages="$errors->get('message')" class="mt-2" /> --}}
                 <x-primary-button class="mt-4">{{ __('Post') }}</x-primary-button>
             </form>
         @endcan
