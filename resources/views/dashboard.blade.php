@@ -6,15 +6,15 @@
 @section('content')
     <div class="bg-purple-400 flex items-center justify-center h-screen">
         <div class="text-center">
-            <h1 class="text-4xl font-bold text-gray-800 mb-8">👋Bienvenido a Nuestro Sitio</h1>
+            <h1 class="text-4xl font-bold text-gray-800 mb-8">👋{{__('Bienvenido a Nuestro Sitio')}}</h1>
             <div class="space-x-4">
                 <!-- Botón Places -->
                 <a href="{{ route('places.index') }}" class="px-6 py-3 bg-purple-600 text-white text-lg rounded hover:bg-purple-600 transition duration-300">
-                    Places
+                    {{__('Places')}}
                 </a>
                 <!-- Botón Posts -->
                 <a href="{{ route('posts.index') }}" class="px-6 py-3 bg-purple-600 text-white text-lg rounded hover:bg-purple-600 transition duration-300">
-                    Posts
+                    {{__('Posts')}}
                 </a>
             </div>
         </div>

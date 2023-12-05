@@ -2,21 +2,21 @@
 import Validator from '../validator'
 
 // Submit form ONLY when validation is OK
-const form = document.getElementById("create-file-form")
+const form = document.getElementById("create-places")
 
 if (form) {
     form.addEventListener("submit", function(event) {
         // Reset errors messages
         // [...]
-        let errorDiv = document.getElementById("file-upload-error")
+        let errorDiv = document.getElementById("file-error")
         errorDiv.style.display = "none"; // Oculta el mensaje de error por defecto
 
         // Get form inputs values
         let data = {
-            "upload": document.getElementsByName("upload")[0].value,
+            "file": document.getElementsByName("file")[0].value,
         }
         let rules = {
-            "upload": "required",
+            "file": "required",
         }
         // Create validation
         let validation = new Validator(data, rules)
@@ -33,7 +33,7 @@ if (form) {
                 let error = errors[inputName]
                 console.log("[ERROR] " + error)
                 // [...]
-                errorDiv.innerText = "Please select a file."; // Establece el mensaje de error
+                errorDiv.innerText = "Xiquillo que te ha dejao la foto"; // Establece el mensaje de error
                 errorDiv.style.display = "block"; // Muestra el mensaje de error
                 
             }
