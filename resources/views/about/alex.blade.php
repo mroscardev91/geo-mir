@@ -46,14 +46,24 @@
         }
 
         .image-container:hover .serious-image {
-            animation: 1s ease-in-out;
-            transform: scaleX(-1);
+            animation: spin 1s ease-in-out;
+            transform: rotate(1080deg); /* 3 voltes */
         }
 
         .image-container:hover .funny-image {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
+        @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(1080deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
 
         .person-info {
             text-align: center;
@@ -94,12 +104,12 @@
     <div class="contenedor">
         <div class="title">About Us</div>
         <div class="image-container" id="modal-button">
-            <img src="{{ asset('img/serio.jpg') }}" alt="Serious" class="serious-image">
-            <img src="{{ asset('img/contento.jpeg') }}" alt="Funny" class="funny-image">
-            <audio id="music1" src="{{ asset('img/sonido.mp3') }}"></audio>
+            <img src="{{ asset('img/triste.jpg') }}" alt="Serious" class="serious-image">
+            <img src="{{ asset('img/feliz.jpg') }}" alt="Funny" class="funny-image">
+            <audio id="music2" src="{{ asset('img/sonido2.mp3') }}"></audio>
         </div>
         <div class="person-info">
-            <div class="name">Óscar Gómez</div>
+            <div class="name">Alex Martinez</div>
             <div class="role">Frontend Developer</div>
             <div class="hobby">Backend Developer</div>
         </div>
@@ -107,7 +117,8 @@
         <div id="video-modal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-75">
             <div class="flex items-center justify-center h-full">
                 <div class="bg-white p-8 rounded shadow-md">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/OyBu98vj-rU?si=_fNXQEwnd5FqRGrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><button id="modal-close-button" class="mt-4 p-2 bg-gray-700 text-white rounded">Close</button>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AaGmXv_e158?si=CHUy8Ur7tE_cj9BQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<button id="modal-close-button" class="mt-4 p-2 bg-gray-700 text-white rounded">Close</button>
                 </div>
             </div>
         </div>
