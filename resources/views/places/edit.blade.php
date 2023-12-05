@@ -18,7 +18,7 @@
                     </div>
 
                     <!-- Formulario para actualizar un place -->
-                    <form method="post" action="{{ route('places.update', $place->id) }}" enctype="multipart/form-data" class="space-y-4">
+                    <form method="post" action="{{ route('places.update', $place->id) }}" enctype="multipart/form-data" class="space-y-4" id="edit-places">
                         @csrf
                         @method('PUT')
                         <div>
@@ -33,6 +33,7 @@
                             <label class="block text-gray-700">{{__('File')}}:</label>
                             <input type="file" name="file" class="mt-1 p-2 w-full border rounded-md">
                         </div>
+                        <div id="file-error" class="text-danger"></div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('Actualitzar')}}</button>
                     </form>
 

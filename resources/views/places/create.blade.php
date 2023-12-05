@@ -20,7 +20,7 @@
                     </div>
                     @endif
 
-                    <form method="post" action="{{ route('places.store') }}" enctype="multipart/form-data" class="space-y-4">
+                    <form method="post" action="{{ route('places.store') }}" enctype="multipart/form-data" class="space-y-4" id="create-places">
                         @csrf
                         <div>
                             <label class="block text-gray-700">{{__('Name')}}:</label>
@@ -39,7 +39,7 @@
                             <option value="2">{{__('Contacts')}}</option>
                             <option value="3">{{__('Private')}}</option>
                         </select>
-                        
+                        <div id="file-error" class="text-danger"></div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('Guardar')}}</button>
                         <a href="{{ route('places.index') }}" class="bg-sky-500 hover:bg-sky-500 text-black font-bold py-2 px-4 rounded">{{__('Tornar a enrere')}}</a>
                     </form>
