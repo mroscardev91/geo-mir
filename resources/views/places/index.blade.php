@@ -27,7 +27,7 @@
                                 </div>
                                 
                             @endif
-                            
+                            <p>Creado por: {{ $place->user->name }}</p>
                         </div>
                         <div class="px-6 py-4 bg-purple-600 flex justify-end items-center">
                             @can('Favorite', $place)
