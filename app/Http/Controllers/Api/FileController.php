@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\File;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
-class FileApiController extends Controller
+class FileController extends Controller
 {
-    
-    
-    /**
+/**
      * Display a listing of the resource.
      */
     public function index()
