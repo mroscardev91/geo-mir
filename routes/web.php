@@ -11,7 +11,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\ReviewController;
+
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -63,8 +63,7 @@ Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name(
 ->middleware('can:Favorite,place');
 
 
-/*Per generar rutes CRUD de reviews*/
-Route::resource('reviews', ReviewController::class);
+
 
 
 
