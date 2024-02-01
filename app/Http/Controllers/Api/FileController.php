@@ -18,7 +18,7 @@ class FileController extends Controller
         $files = File::all();
         return json_encode([
             "success" => "true", 
-            "data" => [$files]
+            "data" => $files
         ]);
     }
 
@@ -166,6 +166,11 @@ class FileController extends Controller
             ], 200);
         }
        
+    }
+
+    public function update_workaround(Request $request, $id)
+    {
+        return $this->update($request, $id);
     }
 
 }
