@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FileController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\TokenController;
 
 /*
@@ -33,4 +34,10 @@ Route::controller(TokenController::class)->group(function(){
         Route::post('login', [TokenController::class, 'login']);
         Route::post('register', [TokenController::class, 'register']);
     });
+});
+
+Route::controller(PostController::class)->group(function(){
+    Route::get('posts', [PostController::class, 'index']);
+    Route::get('{id}/likes', 'showLikes');
+
 });
