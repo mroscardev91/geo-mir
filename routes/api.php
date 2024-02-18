@@ -36,5 +36,6 @@ Route::controller(TokenController::class)->group(function(){
     });
 });
 
-Route::apiResource('places', PlaceController::class);
-Route::post('places/{place}', [PlaceController::class, 'update_workaround']);
+Route::middleware('auth:sanctum')->apiResource('places', PlaceController::class);
+Route::middleware('auth:sanctum')->post('places/{place}', [PlaceController::class, 'update_workaround']);
+Route::middleware('auth:sanctum')->post('/places/{place}/favorites', [PlaceController::class, 'favorite'])->name('places.favorite');
