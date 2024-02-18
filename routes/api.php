@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\TokenController;
+use App\Http\Controllers\Api\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,6 @@ Route::controller(TokenController::class)->group(function(){
         Route::post('register', [TokenController::class, 'register']);
     });
 });
+
+Route::apiResource('places', PlaceController::class);
+Route::post('places/{place}', [PlaceController::class, 'update_workaround']);
