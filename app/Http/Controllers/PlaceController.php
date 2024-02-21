@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Place;
 use App\Models\File;
 use App\Models\User;
+use App\Models\Review;
 use App\Models\Favorite;
 
 use Auth;
@@ -61,7 +62,9 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
         $place->loadCount('favorited');
-        return view('places.show', compact('place'));
+        $reviews = Review::where('place_id',$place->id)->get();
+        return view("places.show")->with(['place' => $place, 'reviews' => $reviews]);
+
     }
 
     public function edit(Place $place)

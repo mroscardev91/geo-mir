@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\TokenController;
 use App\Http\Controllers\Api\PlaceController;
+use App\Http\Controllers\Api\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,5 @@ Route::controller(TokenController::class)->group(function(){
 Route::middleware('auth:sanctum')->apiResource('places', PlaceController::class);
 Route::middleware('auth:sanctum')->post('places/{place}', [PlaceController::class, 'update_workaround']);
 Route::middleware('auth:sanctum')->post('/places/{place}/favorites', [PlaceController::class, 'favorite'])->name('places.favorite');
+
+Route::middleware('auth:sanctum')->apiResource('/places/{place}/reviews', ReviewController::class);

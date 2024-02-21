@@ -184,7 +184,7 @@ class PlaceController extends Controller
             return response()->json([
                 'success'  => false,
                 'message' => 'Error finding place'
-            ], 500);
+            ], 404);
         }
     }
 

@@ -9,17 +9,19 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'place_id', 'comment', 'rating'];
+    protected $fillable = ['user_id', 'place_id', 'body'];
 
-    // Relació amb la taula users
-    public function user()
+    
+    public function author()
     {
         return $this->belongsTo(User::class);
     }
-
-    // Relació amb la taula places
     public function place()
     {
-        return $this->belongsTo(Place::class);
+        return $this->hasOne(Place::class);
+    }
+    public function user()
+    {
+    return $this->belongsTo(User::class, 'user_id');
     }
 }

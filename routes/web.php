@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PlaceController;
-use App\Http\Controllers\FavoriteController;
-
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -63,7 +62,9 @@ Route::post('/places/{place}/favs', [PlaceController::class, 'favorite'])->name(
 ->middleware('can:Favorite,place');
 
 
-
+// Reviews
+Route::post('/places/{place}/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware(['auth', ]);
+Route::delete('/places/{review}/reviews',[ ReviewController::class, 'destroy'])->name('reviews.destroy')->middleware(['auth', ]);
 
 
 
