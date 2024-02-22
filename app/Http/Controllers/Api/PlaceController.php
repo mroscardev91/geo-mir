@@ -44,9 +44,7 @@ class PlaceController extends Controller
             'name' => 'required',
             'description' => 'required',
             'upload' => 'required|mimes:gif,jpeg,jpg,png|max:2048',
-            'longitude' => 'required',
-            'latitude' => 'required',
-            'author_id' => auth()->user()->id,
+            
         ]);
         $upload = $request->file('upload');
         $fileName = $upload->getClientOriginalName();
@@ -67,9 +65,8 @@ class PlaceController extends Controller
                     'name' => $request->input('name'),
                     'description' => $request->input('description'),
                     'file_id' => $file_id->id,
-                    'latitude' => $request->input('latitude'),
-                    'longitude' => $request->input('longitude'),
                     'author_id' => auth()->user()->id,
+
                 ]);
                 return response()->json([
                     'success' => true,
@@ -145,8 +142,6 @@ class PlaceController extends Controller
                     'name' => $request->input('name'),
                     'description' => $request->input('description'),
                     'file_id' => $file_id->id,
-                    'latitude' => $request->input('latitude'),
-                    'longitude' => $request->input('longitude'),
                 ]);
                 return response()->json([
                     'success' => true,
@@ -166,8 +161,6 @@ class PlaceController extends Controller
                     'name' => $request->input('name'),
                     'description' => $request->input('description'),
                     'file_id' => $file_id->id,
-                    'latitude' => $request->input('latitude'),
-                    'longitude' => $request->input('longitude'),
                 ]);
                 return response()->json([
                     'success' => true,

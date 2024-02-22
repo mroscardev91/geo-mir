@@ -66,20 +66,16 @@ class PlaceApiTest extends TestCase
        $upload = UploadedFile::fake()->image($name)->size($size);
        $name = "testOscar";
        $description = "testOscar";
-       $latitude = 12323;
-       $longitude = 12323;
        // Upload fake file using API web service
        $response = $this->postJson("/api/places", [
         "upload" => $upload,
         "name" => $name,
         "description" => $description,
-        "latitude" => $latitude,
-        "longitude" => $longitude
     ]);
        // Check OK response
        $this->_test_ok($response, 201);
        // Check validation errors
-       $response->assertValid(["upload", "name", "description", "latitude", "longitude"]);
+       $response->assertValid(["upload", "name", "description"]);
        // Check JSON dynamic values
        $response->assertJsonPath("data.id",
            fn ($id) => !empty($id)
@@ -98,15 +94,11 @@ class PlaceApiTest extends TestCase
        $upload = UploadedFile::fake()->image($name)->size($size);
        $name = "testOscar";
        $description = "testOscar";
-       $latitude = 23232122;
-       $longitude = 1232323;
        // Upload fake file using API web service
        $response = $this->postJson("/api/places", [
         "upload" => $upload,
         "name" => $name,
         "description" => $description,
-        "latitude" => $latitude,
-        "longitude" => $longitude
     ]);
        // Check ERROR response
        $this->_test_error($response);
@@ -124,7 +116,7 @@ class PlaceApiTest extends TestCase
        // Check OK response
        $this->_test_ok($response);
        // Check JSON exact values
-       $response->assertValid(["upload", "name", "description", "latitude", "longitude"]);
+       $response->assertValid(["upload", "name", "description"]);
        
    }
 
@@ -151,19 +143,15 @@ class PlaceApiTest extends TestCase
        // Upload fake file using API web service
        $name = "testOscar";
        $description = "testOscar";
-       $latitude = 12323;
-       $longitude = 32323;
        $response = $this->putJson("/api/places/{$place->id}", [
            "upload" => $upload,
            "name" => $name,
            "description" => $description,
-           "latitude" => $latitude,
-           "longitude" => $longitude
        ]);
        // Check OK response
        $this->_test_ok($response);
        // Check validation errors
-       $response->assertValid(["upload", "name", "description", "latitude", "longitude"]);
+       $response->assertValid(["upload", "name", "description"]);
    }
 
 
@@ -181,14 +169,10 @@ class PlaceApiTest extends TestCase
        // Upload fake file using API web service
        $name = "testOscar";
        $description = "testOscar";
-       $latitude = 1232323;
-       $longitude = 1232322;
        $response = $this->putJson("/api/places/{$place->id}", [
            "upload" => $upload,
            "name" => $name,
            "description" => $description,
-           "latitude" => $latitude,
-           "longitude" => $longitude
        ]);
        // Check ERROR response
        $this->_test_error($response);
